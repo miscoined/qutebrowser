@@ -117,6 +117,8 @@ def init(args):
         os.path.join(standarddir.data(), 'webengine'))
     _init_stylesheet(profile)
 
+    Attribute(QWebEngineSettings.FullScreenSupportEnabled).set(True)
+
     websettings.init_mappings(MAPPINGS)
     objreg.get('config').changed.connect(update_settings)
 

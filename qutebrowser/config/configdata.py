@@ -1543,8 +1543,7 @@ KEY_DATA = collections.OrderedDict([
     ])),
 
     ('normal', collections.OrderedDict([
-        ('clear-keychain ;; search', ['<Escape>']),
-        ('set-cmd-text -s :open', ['o']),
+        ('clear-keychain ;; search ;; fullscreen --leave', ['<Escape>']), ('set-cmd-text -s :open', ['o']),
         ('set-cmd-text :open {url:pretty}', ['go']),
         ('set-cmd-text -s :open -t', ['O']),
         ('set-cmd-text :open -t -i {url:pretty}', ['gO']),
@@ -1763,8 +1762,10 @@ CHANGED_KEY_COMMANDS = [
     (re.compile(r'^download-page$'), r'download'),
     (re.compile(r'^cancel-download$'), r'download-cancel'),
 
-    (re.compile(r"""^search (''|"")$"""), r'clear-keychain ;; search'),
-    (re.compile(r'^search$'), r'clear-keychain ;; search'),
+    (re.compile(r"""^search (''|"")$"""),
+                r'clear-keychain ;; search ;; fullscreen --leave'),
+    (re.compile(r'^search$'),
+                r'clear-keychain ;; search ;; fullscreen --leave'),
 
     (re.compile(r"""^set-cmd-text ['"](.*) ['"]$"""), r'set-cmd-text -s \1'),
     (re.compile(r"""^set-cmd-text ['"](.*)['"]$"""), r'set-cmd-text \1'),
@@ -1778,7 +1779,8 @@ CHANGED_KEY_COMMANDS = [
     (re.compile(r'^scroll 50 0$'), r'scroll right'),
     (re.compile(r'^scroll ([-\d]+ [-\d]+)$'), r'scroll-px \1'),
 
-    (re.compile(r'^search *;; *clear-keychain$'), r'clear-keychain ;; search'),
+    (re.compile(r'^search *;; *clear-keychain$'),
+                r'clear-keychain ;; search ;; fullscreen --leave'),
     (re.compile(r'^clear-keychain *;; *leave-mode$'), r'leave-mode'),
 
     (re.compile(r'^download-remove --all$'), r'download-clear'),

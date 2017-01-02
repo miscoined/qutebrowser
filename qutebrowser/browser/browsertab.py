@@ -507,6 +507,9 @@ class AbstractTab(QWidget):
         new_tab_requested: Emitted when a new tab should be opened with the
                            given URL.
         load_status_changed: The loading status changed
+        fullscreen_requested: Fullscreen display was requested by the page.
+                              arg: True if fullscreen should be turned on,
+                                   False if it should be turned off.
     """
 
     window_close_requested = pyqtSignal()
@@ -522,6 +525,7 @@ class AbstractTab(QWidget):
     shutting_down = pyqtSignal()
     contents_size_changed = pyqtSignal(QSizeF)
     add_history_item = pyqtSignal(QUrl, QUrl, str)  # url, requested url, title
+    fullscreen_requested = pyqtSignal(bool)
 
     WIDGET_CLASS = None
 
